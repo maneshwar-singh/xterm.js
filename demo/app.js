@@ -54,7 +54,8 @@ app.post('/terminals-tt/:pid/size', function (req, res) {
       rows = parseInt(req.query.rows),
       term = terminals[pid];
 
-  logs[term.pid] = '';
+  //logs[term.pid] = '';
+  console.log(term.pid);
   term.on('data', function(data) {
     logs[term.pid] += data;
   });

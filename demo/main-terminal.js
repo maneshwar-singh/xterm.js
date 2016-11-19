@@ -49,9 +49,21 @@ function doFunction(){
     }
     var cols = size.cols,
         rows = size.rows,
-        url = '/terminals/' + pid + '/size?cols=' + cols + '&rows=' + rows;
+        url = '/terminals-tt/' + pid + '/size?cols=' + cols + '&rows=' + rows;
 
-    fetch(url, {method: 'POST'});
+    fetch(url, {method: 'POST'}).then(function (res) {
+        charWidth = Math.ceil(term.element.offsetWidth / cols);
+    charHeight = Math.ceil(term.element.offsetHeight / rows);
+
+    res.text().then(function (pid) {
+      window.pid = pid;
+      socketURL += pid;
+      socket = new WebSocket(socketURL);
+      socket.onopen = runRealTerminal;
+      socket.onclose = runFakeTerminal;
+      socket.onerror = runFakeTerminal;
+    });
+    });
   });
   protocol = (location.protocol === 'https:') ? 'wss://' : 'ws://';
   socketURL = protocol + location.hostname + ((location.port) ? (':' + location.port) : '') + '/terminals/';
