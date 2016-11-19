@@ -1,15 +1,42 @@
 <!doctype html>
-  <html>
+<html>
     <head>
-      <link rel="stylesheet" href="../dist/xterm.css" />
-      <script src="../dist/xterm.js"></script>
+        <title>xterm.js demo</title>
+        <link rel="stylesheet" href="/dist/xterm.css" />
+        <link rel="stylesheet" href="/dist/addons/fullscreen/fullscreen.css" />
+        <link rel="stylesheet" href="style.css" />
+      	<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/1.0.0/fetch.min.js"></script>
+        <script src="/dist/xterm.js" ></script>
+        <script src="/dist/addons/attach/attach.js" ></script>
+        <script src="/dist/addons/fit/fit.js" ></script>
+        <script src="/dist/addons/fullscreen/fullscreen.js" ></script>
     </head>
     <body>
-      <div id="terminal"></div>
-      <script>
-      	var term = new Terminal();
-        term.open(document.getElementById('#terminal'));
-        term.write('Hello from \033[1;3;31mxterm.js\033[0m $ ')
-      </script>
+        <h1>xterm.js: xterm, in the browser</h1>
+        <div id="terminal-container"></div>
+        <div>
+          <h2>Options</h2>
+          
+          <div>
+          	<h3>Size</h3>
+            <div>
+              <div style="display: inline-block; margin-right: 16px;">
+                <label for="cols">Columns</label>
+                <input type="number" id="cols" />
+              </div>
+              <div style="display: inline-block; margin-right: 16px;">
+                <label for="rows">Rows</label>
+                <input type="number" id="rows" />                
+              </div>
+              <div style="display: inline-block; margin-right: 16px;">
+                <label for="pids">Pid</label>                
+                <input type="number" id="pids" />
+              </div>
+              <input type="button" id="sub" name="Submit-PID" onclick="doFunction();"/>
+            </div>
+          </div>
+        </div>
+        <p><strong>Attention:</strong> The demo is a barebones implementation and is designed for xterm.js evaluation purposes only. Exposing the demo to the public as is would introduce security risks for the host.</p>
+        <script src="main-terminal.js" defer ></script>
     </body>
-  </html>
+</html>

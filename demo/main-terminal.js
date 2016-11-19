@@ -53,7 +53,7 @@ function doFunction(){
 
     fetch(url, {method: 'GET'}).then(function (res) {
         
-
+        console.log(res.text());
     res.text().then(function (pid) {
       window.pid = pid;
       socketURL += pid;
