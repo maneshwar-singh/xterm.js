@@ -51,7 +51,7 @@ function doFunction(){
         rows = size.rows,
         url = '/terminals-tt/' + pid + '/size?cols=' + cols + '&rows=' + rows;
 
-    fetch(url, {method: 'POST'}).then(function (res) {
+    fetch(url, {method: 'GET'}).then(function (res) {
         charWidth = Math.ceil(term.element.offsetWidth / cols);
     charHeight = Math.ceil(term.element.offsetHeight / rows);
 

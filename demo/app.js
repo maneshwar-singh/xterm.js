@@ -48,7 +48,7 @@ app.post('/terminals', function (req, res) {
   res.end();
 });
 
-app.post('/terminals-tt/:pid/size', function (req, res) {
+app.get('/terminals-tt/:pid/size', function (req, res) {
   var pid = parseInt(req.params.pid),
       cols = parseInt(req.query.cols),
       rows = parseInt(req.query.rows),
