@@ -59,7 +59,22 @@ function doFunction(){
   term.open(terminalContainer);
   term.fit();
 
-   
+  var initialGeometry = term.proposeGeometry(),
+      cols = initialGeometry.cols,
+      rows = initialGeometry.rows;
+
+  colsElement.value = cols;
+  rowsElement.value = rows;
+charWidth = Math.ceil(term.element.offsetWidth / cols);
+    charHeight = Math.ceil(term.element.offsetHeight / rows);
+  window.pid = pid;
+      socketURL += pid;
+      socket = new WebSocket(socketURL);
+      socket.onopen = runRealTerminal;
+      socket.onclose = runFakeTerminal;
+      socket.onerror = runFakeTerminal;
+
+  
 }
 function createTerminal() {
   // Clean terminal
