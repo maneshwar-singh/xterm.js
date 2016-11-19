@@ -51,7 +51,14 @@ function doFunction(){
         rows = 81,
         url = '/terminals-tt/' + pid + '/size?cols=' + cols + '&rows=' + rows;
 
+ 
+
     fetch(url, {method: 'GET'});
+     protocol = (location.protocol === 'https:') ? 'wss://' : 'ws://';
+  socketURL = protocol + location.hostname + ((location.port) ? (':' + location.port) : '') + '/terminals/';
+
+  term.open(terminalContainer);
+  term.fit();
         console.log("Fuck!");            
       window.pid = pid;
       socketURL += pid;
