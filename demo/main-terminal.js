@@ -47,8 +47,8 @@ function doFunction(){
     if (!pid) {
       return;
     }
-    var cols = size.cols,
-        rows = size.rows,
+    var cols = 81,
+        rows = 81,
         url = '/terminals-tt/' + pid + '/size?cols=' + cols + '&rows=' + rows;
 
     fetch(url, {method: 'GET'}).then(function (res) {
