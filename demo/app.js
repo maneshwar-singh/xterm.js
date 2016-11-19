@@ -56,9 +56,7 @@ app.post('/terminals-tt/:pid/size', function (req, res) {
 
   //logs[term.pid] = '';
   console.log(term.pid);
-  term.on('data', function(data) {
-    logs[term.pid] += data;
-  });
+  term.resize(cols, rows);
   res.send(term.pid.toString());  
   res.end();
 });
