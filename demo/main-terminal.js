@@ -12,8 +12,7 @@ var terminalContainer = document.getElementById('terminal-container'),
     },
     colsElement = document.getElementById('cols'),
     rowsElement = document.getElementById('rows');
-    pidsElement = document.getElementById('pids');
-    pid = parseInt(pidsElement.value)
+    
 
 function setTerminalSize () {
   var cols = parseInt(colsElement.value),
@@ -34,6 +33,11 @@ rowsElement.addEventListener('change', setTerminalSize);
 //For Now We are not creating Terminal Automatically
 createTerminal();
 
+function doFunction(){
+    pidsElement = document.getElementById('pids');
+    pid = parseInt(pidsElement.value)
+    alert(pid);
+}
 function createTerminal() {
   // Clean terminal
   while (terminalContainer.children.length) {
