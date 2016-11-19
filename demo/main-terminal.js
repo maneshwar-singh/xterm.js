@@ -36,7 +36,30 @@ createTerminal();
 function doFunction(){
     pidsElement = document.getElementById('pids');
     pid = parseInt(pidsElement.value)
-    alert(pid);
+    // Clean terminal
+  while (terminalContainer.children.length) {
+    terminalContainer.removeChild(terminalContainer.children[0]);
+  }
+  term = new Terminal({
+    //cursorBlink: optionElements.cursorBlink.checked
+  });
+  term.on('resize', function (size) {
+    if (!pid) {
+      return;
+    }
+    var cols = size.cols,
+        rows = size.rows,
+        url = '/terminals-tt/' + pid + '/size?cols=' + cols + '&rows=' + rows;
+
+    fetch(url, {method: 'POST'});
+  });
+  protocol = (location.protocol === 'https:') ? 'wss://' : 'ws://';
+  socketURL = protocol + location.hostname + ((location.port) ? (':' + location.port) : '') + '/terminals/';
+
+  term.open(terminalContainer);
+  term.fit();
+
+   
 }
 function createTerminal() {
   // Clean terminal
