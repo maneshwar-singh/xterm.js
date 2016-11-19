@@ -43,7 +43,7 @@ function doFunction(){
   term = new Terminal({
     //cursorBlink: optionElements.cursorBlink.checked
   });
-  term.on('resize', function (size) {
+  
     if (!pid) {
       return;
     }
@@ -64,34 +64,8 @@ function doFunction(){
       socket.onerror = runFakeTerminal;
     });
     });
-  });
-  protocol = (location.protocol === 'https:') ? 'wss://' : 'ws://';
-  socketURL = protocol + location.hostname + ((location.port) ? (':' + location.port) : '') + '/terminals/';
-
-  term.open(terminalContainer);
-  term.fit();
-
-  var initialGeometry = term.proposeGeometry(),
-      cols = initialGeometry.cols,
-      rows = initialGeometry.rows;
-
-  colsElement.value = cols;
-  rowsElement.value = rows;
-
-  fetch('/terminals?cols=' + cols + '&rows=' + rows, {method: 'POST'}).then(function (res) {
-
-    charWidth = Math.ceil(term.element.offsetWidth / cols);
-    charHeight = Math.ceil(term.element.offsetHeight / rows);
-
-    res.text().then(function (pid) {
-      window.pid = pid;
-      socketURL += pid;
-      socket = new WebSocket(socketURL);
-      socket.onopen = runRealTerminal;
-      socket.onclose = runFakeTerminal;
-      socket.onerror = runFakeTerminal;
-    });
-  });
+  
+  
 }
 function createTerminal() {
   // Clean terminal
