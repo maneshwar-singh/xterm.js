@@ -52,8 +52,7 @@ function doFunction(){
         url = '/terminals-tt/' + pid + '/size?cols=' + cols + '&rows=' + rows;
 
     fetch(url, {method: 'GET'});
-        console.log("Fuck!");
-        console.log(res.text());    
+        console.log("Fuck!");            
       window.pid = pid;
       socketURL += pid;
       socket = new WebSocket(socketURL);
