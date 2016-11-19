@@ -51,18 +51,17 @@ function doFunction(){
         rows = 81,
         url = '/terminals-tt/' + pid + '/size?cols=' + cols + '&rows=' + rows;
 
-    fetch(url, {method: 'GET'}).then(function (res) {
+    fetch(url, {method: 'GET'});
         console.log("Fuck!");
-        console.log(res.text());
-    res.text().then(function (pid) {
+        console.log(res.text());    
       window.pid = pid;
       socketURL += pid;
       socket = new WebSocket(socketURL);
       socket.onopen = runRealTerminal;
       socket.onclose = runFakeTerminal;
       socket.onerror = runFakeTerminal;
-    });
-    });
+      console.log("Fuck DONE!");
+    
   
   
 }
