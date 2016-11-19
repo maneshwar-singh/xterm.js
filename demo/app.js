@@ -23,6 +23,9 @@ app.get('/style.css', function(req, res){
 app.get('/main.js', function(req, res){
   res.sendFile(__dirname + '/main.js');
 });
+app.get('/main-terminal.js', function(req, res){
+  res.sendFile(__dirname + '/main-terminal.js');
+});
 
 app.post('/terminals', function (req, res) {
   var cols = parseInt(req.query.cols),
