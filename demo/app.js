@@ -45,6 +45,20 @@ app.post('/terminals', function (req, res) {
   res.end();
 });
 
+app.post('/terminals-tt/:pid/size', function (req, res) {
+  var pid = parseInt(req.params.pid),
+      cols = parseInt(req.query.cols),
+      rows = parseInt(req.query.rows),
+      term = terminals[pid];
+
+  logs[term.pid] = '';
+  term.on('data', function(data) {
+    logs[term.pid] += data;
+  });
+  res.send(term.pid.toString());  
+  res.end();
+});
+
 app.post('/terminals/:pid/size', function (req, res) {
   var pid = parseInt(req.params.pid),
       cols = parseInt(req.query.cols),

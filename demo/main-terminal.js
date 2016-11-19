@@ -12,6 +12,8 @@ var terminalContainer = document.getElementById('terminal-container'),
     },
     colsElement = document.getElementById('cols'),
     rowsElement = document.getElementById('rows');
+    pidsElement = document.getElementById('pids');
+    pid = parseInt(pidsElement.value)
 
 function setTerminalSize () {
   var cols = parseInt(colsElement.value),
@@ -30,7 +32,7 @@ rowsElement.addEventListener('change', setTerminalSize);
 optionElements.cursorBlink.addEventListener('change', createTerminal);
 
 //For Now We are not creating Terminal Automatically
-//createTerminal();
+createTerminal();
 
 function createTerminal() {
   // Clean terminal
@@ -46,7 +48,7 @@ function createTerminal() {
     }
     var cols = size.cols,
         rows = size.rows,
-        url = '/terminals/' + pid + '/size?cols=' + cols + '&rows=' + rows;
+        url = '/terminals-tt/' + pid + '/size?cols=' + cols + '&rows=' + rows;
 
     fetch(url, {method: 'POST'});
   });
