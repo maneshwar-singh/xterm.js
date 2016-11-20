@@ -31,7 +31,7 @@ rowsElement.addEventListener('change', setTerminalSize);
 //optionElements.cursorBlink.addEventListener('change', createTerminal);
 
 //For Now We are not creating Terminal Automatically
-createTerminal();
+//createTerminal();
 
 function doFunction(){
     pidsElement = document.getElementById('pids');
